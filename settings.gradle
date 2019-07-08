@@ -1,3 +1,1 @@
 rootProject.name = 'catt-core'
-
-include 'catt-transport-tcp'
