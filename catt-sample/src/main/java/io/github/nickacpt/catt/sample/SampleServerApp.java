@@ -12,33 +12,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.nickacpt.catt;
+package io.github.nickacpt.catt.sample;
 
-import java.util.UUID;
+import io.github.nickacpt.catt.server.CATTServer;
 
-public class DeviceImpl implements IDevice {
-    private UUID uuid;
-    private String name;
-    private byte[] publicKey;
+import java.util.Scanner;
 
-    public DeviceImpl(UUID uuid, String name, byte[] publicKey) {
-        this.uuid = uuid;
-        this.name = name;
-        this.publicKey = publicKey;
+import static java.lang.System.out;
+
+public class SampleServerApp {
+
+    public static void main(String[] args) {
+        out.println("Started test app CATT server...");
+        out.println("");
+
+        CATTServer server = new CATTServer();
+
+        server.startListening();
+
+        Scanner scanner = new Scanner(System.in);
+        for (String line; (line = scanner.nextLine()) != null; ) {
+            if (line.equalsIgnoreCase("quit") || line.equalsIgnoreCase("stop")) {
+                System.exit(0);
+            }
+        }
     }
 
-    @Override
-    public UUID getUniqueId() {
-        return uuid;
-    }
-
-    @Override
-    public String getDeviceName() {
-        return name;
-    }
-
-    @Override
-    public byte[] getPublicKey() {
-        return publicKey;
-    }
 }

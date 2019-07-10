@@ -12,14 +12,33 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.nickacpt.catt.discovery;
+package io.github.nickacpt.catt.devices;
 
-import io.github.nickacpt.catt.devices.IDevice;
+import java.util.UUID;
 
-public interface IDeviceDiscoveryHandler {
+public class DeviceImpl implements IDevice {
+    private UUID uuid;
+    private String name;
+    private byte[] publicKey;
 
-    void onDeviceDiscovered(IDevice device);
+    public DeviceImpl(UUID uuid, String name, byte[] publicKey) {
+        this.uuid = uuid;
+        this.name = name;
+        this.publicKey = publicKey;
+    }
 
-    void onDeviceLost(IDevice device);
+    @Override
+    public UUID getUniqueId() {
+        return uuid;
+    }
 
+    @Override
+    public String getDeviceName() {
+        return name;
+    }
+
+    @Override
+    public byte[] getPublicKey() {
+        return publicKey;
+    }
 }

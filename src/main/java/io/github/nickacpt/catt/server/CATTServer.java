@@ -12,14 +12,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.nickacpt.catt.discovery;
+package io.github.nickacpt.catt.server;
 
 import io.github.nickacpt.catt.devices.IDevice;
 
-public interface IDeviceDiscoveryHandler {
+import java.util.List;
 
-    void onDeviceDiscovered(IDevice device);
+public class CATTServer implements IServer {
 
-    void onDeviceLost(IDevice device);
+    @Override
+    public List<IDevice> getConnectedDevices() {
+        return null;
+    }
 
+    @Override
+    public void startListening() {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
 }

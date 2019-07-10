@@ -1,1 +1,3 @@
 rootProject.name = 'catt-core'
+include 'catt-sample'
+

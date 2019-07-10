@@ -12,16 +12,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.nickacpt.catt;
+package io.github.nickacpt.catt.devices;
 
-import java.util.UUID;
+import io.github.nickacpt.catt.packets.IPacket;
 
-public interface IDevice {
+public interface IConnection {
 
-    UUID getUniqueId();
+    IDevice getDevice();
 
-    String getDeviceName();
+    boolean isConnected();
 
-    byte[] getPublicKey();
+    void sendPacket(IPacket packet);
 
 }
