@@ -16,12 +16,27 @@ package io.github.nickacpt.catt.devices;
 
 import java.util.UUID;
 
+/**
+ * Represents a connected device.
+ */
 public interface IDevice {
 
+    /**
+     * Gets the Unique ID assigned to this device.
+     * @return The Unique ID assigned to this device
+     */
     UUID getUniqueId();
 
+    /**
+     * Gets the name assigned to this device.
+     * @return The name assigned to this device
+     */
     String getDeviceName();
 
+    /**
+     * Gets the public key used by this device. Used for packet decryption.
+     * @return The Public Key used by this device
+     */
     byte[] getPublicKey();
 
 }

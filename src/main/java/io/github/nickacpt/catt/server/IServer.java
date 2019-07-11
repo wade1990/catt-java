@@ -14,16 +14,42 @@
  */
 package io.github.nickacpt.catt.server;
 
-import io.github.nickacpt.catt.devices.IDevice;
+import io.github.nickacpt.catt.devices.IConnection;
+import io.github.nickacpt.catt.transport.ITransport;
 
 import java.util.Collection;
 
+/**
+ * Represents the server that's going to handle device connections.
+ */
 public interface IServer {
 
-    Collection<IDevice> getConnectedDevices();
+    /**
+     * Gets the connected devices to this server.
+     * @return The connections that are active
+     */
+    Collection<IConnection> getConnections();
 
+    /**
+     * Starts listening for connections.
+     */
     void startListening();
 
+    /**
+     * Stops the server's connection listener and closes all connected connections.
+     */
     void stop();
+
+    /**
+     * Add a packet transport to this server.
+     * @param transport The transport to add
+     */
+    void addTransport(ITransport transport);
+
+    /**
+     * Check whether the server has already started.
+     * @return <tt>true</tt> if the server already started, <tt>false</tt> otherwise
+     */
+    boolean hasStarted();
 
 }

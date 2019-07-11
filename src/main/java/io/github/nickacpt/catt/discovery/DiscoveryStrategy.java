@@ -14,10 +14,20 @@
  */
 package io.github.nickacpt.catt.discovery;
 
+/**
+ * Represents a device discovery.
+ */
 public interface DiscoveryStrategy {
 
+    /**
+     * Start device discovery with this strategy.
+     * @param handler The handler that will deal with discovered devices
+     */
     void startDiscovery(IDeviceDiscoveryHandler handler);
 
+    /**
+     * Stop device discovery and dispose native resources.
+     */
     void stopDiscovery();
 
 }

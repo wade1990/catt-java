@@ -16,10 +16,21 @@ package io.github.nickacpt.catt.discovery;
 
 import io.github.nickacpt.catt.devices.IDevice;
 
+/**
+ * Callback interface for handling discovered devices.
+ */
 public interface IDeviceDiscoveryHandler {
 
+    /**
+     * Handler for when a device is discovered.
+     * @param device The discovered device
+     */
     void onDeviceDiscovered(IDevice device);
 
+    /**
+     * Handler for when a device is lost.
+     * @param device The device that got lost
+     */
     void onDeviceLost(IDevice device);
 
 }

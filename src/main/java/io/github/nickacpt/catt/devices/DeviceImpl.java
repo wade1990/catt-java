@@ -16,6 +16,9 @@ package io.github.nickacpt.catt.devices;
 
 import java.util.UUID;
 
+/**
+ * Implementation of a Connected Device.
+ */
 public class DeviceImpl implements IDevice {
     private UUID uuid;
     private String name;

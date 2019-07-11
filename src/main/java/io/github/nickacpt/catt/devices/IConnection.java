@@ -16,12 +16,27 @@ package io.github.nickacpt.catt.devices;
 
 import io.github.nickacpt.catt.packets.IPacket;
 
+/**
+ * Represents a connection.
+ */
 public interface IConnection {
 
+    /**
+     * Gets the connected device.
+     * @return The connected device
+     */
     IDevice getDevice();
 
+    /**
+     * Gets whether this connection is still active.
+     * @return <tt>true</tt> if the connection is still active, <tt>false</tt> otherwise
+     */
     boolean isConnected();
 
+    /**
+     * Send a packet to the connected device.
+     * @param packet The packet to send
+     */
     void sendPacket(IPacket packet);
 
 }

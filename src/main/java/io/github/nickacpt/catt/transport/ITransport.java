@@ -12,26 +12,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.nickacpt.catt.server;
+package io.github.nickacpt.catt.transport;
 
-import io.github.nickacpt.catt.devices.IDevice;
+/**
+ * Represents a data transport implementation
+ */
+public interface ITransport {
 
-import java.util.List;
+    /**
+     * Gets whether this transport instance can only be used for Peer-to-Peer communications
+     * @return <tt>true</tt> if this transport can only be used for p2p communication, <tt>false</tt> otherwise
+     */
+    boolean isPeerTransport();
 
-public class CATTServer implements IServer {
-
-    @Override
-    public List<IDevice> getConnectedDevices() {
-        return null;
-    }
-
-    @Override
-    public void startListening() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
 }

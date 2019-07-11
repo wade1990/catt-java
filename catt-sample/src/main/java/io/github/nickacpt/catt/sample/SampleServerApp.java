@@ -14,9 +14,11 @@
  */
 package io.github.nickacpt.catt.sample;
 
-import io.github.nickacpt.catt.server.CATTServer;
+import io.github.nickacpt.catt.server.CattServer;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static java.lang.System.out;
 
@@ -26,16 +28,46 @@ public class SampleServerApp {
         out.println("Started test app CATT server...");
         out.println("");
 
-        CATTServer server = new CATTServer();
-
+        CattServer server = new CattServer();
         server.startListening();
 
         Scanner scanner = new Scanner(System.in);
-        for (String line; (line = scanner.nextLine()) != null; ) {
-            if (line.equalsIgnoreCase("quit") || line.equalsIgnoreCase("stop")) {
+        for (String line; (line = getLine(scanner)) != null; ) {
+            if (line.isEmpty() || line.equalsIgnoreCase("quit") || line.equalsIgnoreCase("stop")) {
                 System.exit(0);
+                return;
+            }
+            if (line.startsWith("srv>")) {
+                try {
+                    switch (line.substring("srv>".length()).toLowerCase()) {
+                        case "start":
+                            server.startListening();
+                            out.println("Started listening!");
+                            break;
+                        case "stop":
+                            server.stop();
+                            out.println("Stopped listening!");
+                            break;
+                        case "connections":
+                            out.printf("Connections: [%s]%n", String.join(", ",
+                                    server.getConnections().stream()
+                                            .map(m -> String.format("[%s, %s]", m.getDevice().getDeviceName(),
+                                                    m.isConnected()))
+                                            .collect(Collectors.toCollection(ArrayList::new))));
+                            break;
+                    }
+                } catch (Exception e) {
+                    out.println("Error occurred whilst running your command: " + e.getMessage());
+                }
             }
         }
     }
 
+    private static String getLine(Scanner scanner) {
+        try {
+            return scanner.nextLine();
+        } catch (Exception e) {
+            return "";
+        }
+    }
 }

@@ -14,5 +14,8 @@
  */
 package io.github.nickacpt.catt.packets;
 
+/**
+ * Represents a packet that is going to be sent.
+ */
 public interface IPacket {
 }
